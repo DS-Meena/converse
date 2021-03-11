@@ -1,10 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-# to get user details
-from django.contrib.auth import get_user_model
-User = get_user_model()
-
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -30,26 +26,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
-        # trying send_room functions 
-        # get sending response using send_room function
-        if len(message.lstrip()) != 0: # not send empty messages
-            await self.send_room(message)
-
-        # Send message to room group
-        # neche laga diya
-
-    # send room function to call chat message function
-    async def send_room(self, message):
-
-        # call chat message which will send the message to group
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'chat_message',
-                'message': message,
-                # trying to use user model
-                
+                'message': message
             }
         )
 

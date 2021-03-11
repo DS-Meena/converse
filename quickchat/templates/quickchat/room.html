@@ -193,7 +193,13 @@ because django accesses it first
             div2.classList.add("flex-row")
             
             // trying to get username
-            // only authenticated allowed here
+            {% if request.user.is_authenticated %}
+                    console.log("authenticated")
+            {% else %}
+        
+            {% endif %} 
+            
+            
 
             // create and add username element
             // calling function select user with current user_id

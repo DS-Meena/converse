@@ -76,6 +76,9 @@ urlpatterns = [
     # link to the chatroom pages (inside app) (second one)
     path('room/', include('room.urls', namespace='room')),
 
+    # link to the quick chat room 
+    path('quickchat/', include('quickchat.urls', namespace='quickchat')),
+
     # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     # templates added manually
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_reset/password_change_done.html'), 

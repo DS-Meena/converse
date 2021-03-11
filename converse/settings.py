@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'room', # this one for chatroom (no database)
     'account',  # this one for user management
     'chatroom', # this is for the public chatrooms
+    'quickchat', # this is for the limited chatroom
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
