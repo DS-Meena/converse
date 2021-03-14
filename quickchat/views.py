@@ -15,8 +15,18 @@ from asgiref.sync import async_to_sync
 # 	context['roomName'] = roomName
 # 	return render(request, "room/room.html", context)
 
-
 def quickchat(request, room_name):
+
     return render(request, 'quickchat/room.html', {
-        'room_name': room_name
+        'room_name': room_name,
+        'userhandle': user_handle
     })
+
+
+# def withForm(request):
+# 	form = quickForm(request.POST)
+
+# 	return render(request, 'quickchat/room.html', {
+# 			'room_name': form.cleaned_data['room'],
+# 			'userhandle': form.cleaned_data['user_handle']
+# 		})

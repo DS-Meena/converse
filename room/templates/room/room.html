@@ -146,18 +146,22 @@ because django accesses it first
         function appendChatMessage(data, maintainPosition, isNewMessage)
         {
             message = data['message']
-            // data should contain username
-            var username = "dsm" + ": "
+            timestamp = data['natural_timestamp']
 
+            // data should contain username
+            user_id = data['user_id']
+            uName = data['username']
+
+            var username = uName + ':';
             var msg = message + '\n';
 
             console.log("messae is"+msg);
             // create a message element (looks good)
-            createChatMessageElement(msg, username, maintainPosition, isNewMessage)
+            createChatMessageElement(msg, username, user_id, timestamp, maintainPosition, isNewMessage)
         }
 
         // this functions creates a message element (good look) and also insert (not forgot)
-        function createChatMessageElement(msg, username,maintainPosition, isNewMessage)
+        function createChatMessageElement(msg, username, user_id, timestamp, maintainPosition, isNewMessage)
         {
             // get the main part of chat log
             var chatLog = document.getElementById("chat-log")
@@ -205,6 +209,17 @@ because django accesses it first
             usernameSpan.classList.add("username-span")
             usernameSpan.innerHTML = username  // got from upper
             div2.appendChild(usernameSpan)
+
+            // create and add timestamp to div2
+            var timestampSpan = document.createElement("span")
+            timestampSpan.innerHTML = timestamp
+            timestampSpan.classList.add("timestamp-span")
+            timestampSpan.classList.add("d-flex")
+            timestampSpan.classList.add("align-items-center")
+            timestampSpan.addEventListener("click", function(e){
+                selectUser(user_id)
+            })
+            div2.appendChild(timestampSpan)
 
             // add div2 element to div1
             div1.appendChild(div2)

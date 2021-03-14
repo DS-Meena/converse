@@ -1,6 +1,11 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
+# to calcualte the timestamp
+from django.contrib.humanize.templatetags.humanize import naturaltime, naturalday
+from django.utils import timezone
+from datetime import datetime
+
 # to get user details
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -49,7 +54,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 # trying to use user model
-                
+                'username': self.scope['user'].username,
+                'user_id': self.scope['user'].id,
             }
         )
 
@@ -57,7 +63,35 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def chat_message(self, event):
         message = event['message']
 
+        # try to calcualte the timestamp also
+        timestamp = calculate_timestamp(timezone.now())
+
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
+            'username': event['username'],
+            'user_id': event['user_id'],
+            'natural_timestamp': timestamp,
         }))
+
+# this function will get the time at which message sent
+def calculate_timestamp(timestamp):
+    """
+    1. Today or yesterday:
+        - EX: 'today at 10:56 AM'
+        - EX: 'yesterday at 5:19 PM'
+    2. other:
+        - EX: 05/06/2020
+        - EX: 12/28/2020
+    """
+    ts = ""
+    # Today or yesterday
+    if (naturalday(timestamp) == "today") or (naturalday(timestamp) == "yesterday"):
+        str_time = datetime.strftime(timestamp, "%I:%M %p")
+        str_time = str_time.strip("0")
+        ts = f"{naturalday(timestamp)} at {str_time}"
+    # other days
+    else:
+        str_time = datetime.strftime(timestamp, "%m/%d/%Y")
+        ts = f"{str_time}"
+    return str(ts)

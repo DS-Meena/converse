@@ -60,6 +60,7 @@ because django accesses it first
         <div class="d-flex flex-row justify-content-between">
             <!-- name of current room -->
             <h3 class="">{{room_name}}</h3>
+            {{userhandle}}
         </div>
     </div>
 
@@ -91,6 +92,7 @@ because django accesses it first
     </div>
 
     {{ room_name|json_script:"room-name" }}
+    {{ userhandle|json_script:"user-handle"}}
 </div>
 
 <!-- this contacts with web socket and send and receive messages -->
@@ -101,7 +103,7 @@ because django accesses it first
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
-            + '/ws/room/'
+            + '/ws/quickchat/'
             + roomName
             + '/'
         );
@@ -146,18 +148,24 @@ because django accesses it first
         function appendChatMessage(data, maintainPosition, isNewMessage)
         {
             message = data['message']
-            // data should contain username
-            var username = "dsm" + ": "
+            timestamp = data['natural_timestamp']
 
+            // data should contain username
+            uName = data['username']
+            // uName = {{userhandle}}
+            // const uName = JSON.parse(document.getElementById('user-handle').textContent);
+
+            console.log("name is ", uName)
+            var username = uName + ": ";
             var msg = message + '\n';
 
             console.log("messae is"+msg);
             // create a message element (looks good)
-            createChatMessageElement(msg, username, maintainPosition, isNewMessage)
+            createChatMessageElement(msg, username, timestamp, maintainPosition, isNewMessage)
         }
 
         // this functions creates a message element (good look) and also insert (not forgot)
-        function createChatMessageElement(msg, username,maintainPosition, isNewMessage)
+        function createChatMessageElement(msg, username, timestamp, maintainPosition, isNewMessage)
         {
             // get the main part of chat log
             var chatLog = document.getElementById("chat-log")
@@ -191,15 +199,7 @@ because django accesses it first
             var div2 = document.createElement("div")
             div2.classList.add("d-flex")
             div2.classList.add("flex-row")
-            
-            // trying to get username
-            {% if request.user.is_authenticated %}
-                    console.log("authenticated")
-            {% else %}
-        
-            {% endif %} 
-            
-            
+ 
 
             // create and add username element
             // calling function select user with current user_id
@@ -211,6 +211,17 @@ because django accesses it first
             usernameSpan.classList.add("username-span")
             usernameSpan.innerHTML = username  // got from upper
             div2.appendChild(usernameSpan)
+
+            // create and add timestamp to div2
+            var timestampSpan = document.createElement("span")
+            timestampSpan.innerHTML = timestamp
+            timestampSpan.classList.add("timestamp-span")
+            timestampSpan.classList.add("d-flex")
+            timestampSpan.classList.add("align-items-center")
+            timestampSpan.addEventListener("click", function(e){
+                selectUser(user_id)
+            })
+            div2.appendChild(timestampSpan)
 
             // add div2 element to div1
             div1.appendChild(div2)
