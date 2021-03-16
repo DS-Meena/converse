@@ -23,7 +23,7 @@ application = ProtocolTypeRouter({
   	"websocket": AuthMiddlewareStack(
         URLRouter([
         		url(r'ws/room/(?P<room_name>\w+)/$', ChatConsumer.as_asgi()),
-        		url(r'ws/quickchat/(?P<room_name>\w+)/$', CC.as_asgi()),
+        		url(r'ws/quickchat/(?P<room_name>\w+)/(?P<user_handle>\w+)/$', CC.as_asgi()),
         	]
 
             # room.routing.websocket_urlpatterns,
