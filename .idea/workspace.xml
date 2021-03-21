@@ -20,13 +20,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0689ea26-c5ab-46e8-9e2b-591ccf53f6da" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/converse/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quickchat/consumers.py" beforeDir="false" afterPath="$PROJECT_DIR$/quickchat/consumers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/friend_request_status.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/friend_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/friend_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/snippets/accept_friend_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/snippets/cancel_friend_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/snippets/decline_friend_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/snippets/remove_friend.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/templates/friend/snippets/send_friend_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/friends/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/converse/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friends/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/friends/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friends/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/friends/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +61,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.project" />
   </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -109,5 +133,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="745" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1614973842135" />
+    <state x="386" y="120" key="SettingsEditor" timestamp="1616237891558">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="386" y="120" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1616237891558" />
   </component>
 </project>

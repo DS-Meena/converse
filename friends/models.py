@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 
+
 # Create your models here.
 
 # For FriendList
@@ -9,7 +10,7 @@ class FriendList(models.Model):
     # Every friend list must have a user associated with it
     # One friend list per user
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                 on_delete=models.CASCADE, related_name="user")
+                                on_delete=models.CASCADE, related_name="user")
     # Friend list
     friends = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name="friends")
 
@@ -33,11 +34,11 @@ class FriendList(models.Model):
         """
         Removee is the person to be removed
         """
-        remover_friends_list = self # person terminating the friendship
+        remover_friends_list = self  # person terminating the friendship
 
         remover_friends_list.remove_friend(removee)
 
-        #Remove friend from removee friend list
+        # Remove friend from removee friend list
         friends_list = FriendList.objects.get(user=removee)
         friends_list.remove_friend(self.user)
 
@@ -63,7 +64,7 @@ class FriendRequest(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return  self.sender.username
+        return self.sender.username
 
     def accept(self):
         """
@@ -83,7 +84,7 @@ class FriendRequest(models.Model):
         Decline a friend req,
         Declined by setting the active field to false
         """
-        self.is_active=False
+        self.is_active = False
         self.save()
 
     def cancel(self):
@@ -94,6 +95,3 @@ class FriendRequest(models.Model):
         """
         self.is_active = False
         self.save()
-
-
-
