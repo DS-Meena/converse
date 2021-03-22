@@ -60,6 +60,9 @@ urlpatterns = [
     # link to the user account pages (inside app)
     path('account/', include('account.urls', namespace='account')),
 
+    # link to the friend system
+    path('friends/', include('friends.urls',namespace='friend')),
+
     # add link for the user registration
     path('register/', register_view, name="register"),
 

@@ -6,7 +6,6 @@ from django.contrib.humanize.templatetags.humanize import naturaltime, naturalda
 from django.utils import timezone
 from datetime import datetime
 
-
 # trying using form
 from chatapp.forms import quickForm
 
@@ -43,12 +42,17 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # Send message to room group
         # neche laga diya
 
-
     # send room function to call chat message function
     async def send_room(self, message):
-
-        user_handle = self.scope['url_route']['kwargs']['user_handle']
-        print(user_handle)
+        # idhar access karna chata hu form
+        # taki return kar saku room.html ko
+        # par no request so no response
+        # form = Form()
+        # if form.is_valid():
+        #     user_handle = user_handle = form.cleaned_data['user_handle']
+        # else:
+        #     user_handle = "unknown"
+        # print(user_handle)
 
         # call chat message which will send the message to group
         # Send message to room group
@@ -58,7 +62,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 # trying to get user handle
-                'username': user_handle,
+                'username': 'unknown',
             }
         )
 
