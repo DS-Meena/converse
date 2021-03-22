@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'chatapp',
     'room', # this one for chatroom (no database)
     'account',  # this one for user management
-    'friends', # for the friend system app
     'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
     'django.contrib.admin',
@@ -60,7 +59,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',  # channels support
     'django.contrib.humanize',  # timestamp support
-
 ]
 
 MIDDLEWARE = [
@@ -124,24 +122,9 @@ CHANNEL_LAYERS = {
 # }
 
 # postgresql
-# DB_NAME = "converse"
-# DB_USER = "dsm"
-# DB_PASSWORD = "Dharam@098"
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': DB_NAME,
-#         'USER': DB_USER,
-#         'PASSWORD': DB_PASSWORD,
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-# postgresql
-DB_NAME = 'converse'
-DB_USER = 'prasun'
-DB_PASSWORD = "zxcvbnm"
-
+DB_NAME = "converse"
+DB_USER = "dsm"
+DB_PASSWORD = "Dharam@098"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
