@@ -97,14 +97,28 @@ because django accesses it first
 
 <!-- this contacts with web socket and send and receive messages -->
 <script type="text/javascript">
+    // this is for limited time chatting 
+    // now for 100s
+
+    setTimeout(goHome, 100000);
+
+    // idea is to allow user to chat for limited time only
+    function goHome()
+    {
+        window.location.replace("");
+    }
+
 
     const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    const userhandle = JSON.parse(document.getElementById('user-handle').textContent);
 
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
             + '/ws/quickchat/'
             + roomName
+            + '/'
+            + userhandle
             + '/'
         );
 
@@ -265,6 +279,4 @@ because django accesses it first
 </script>
 
 {% endblock content %}
-
-
 
