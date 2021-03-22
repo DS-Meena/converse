@@ -14,7 +14,7 @@ from django.db.models import Q
 
 # To fetch friendlist
 from friends.friend_request_status import FriendRequestStatus
-from friends.models import FriendList
+from friends.models import FriendList,FriendRequest
 
 # To get friend req state
 from friends.utils import get_friend_request_or_false
@@ -145,8 +145,8 @@ def account_view(request, *args, **kwargs):
 			# if it doesn't exist then we need to create it
 			friend_list = FriendList(user=account)
 			friend_list.save()
-		friends= friend_list.friends.all()
-		context['friends']=friends
+		friends = friend_list.friends.all()
+		context['friends'] = friends
 
 
 
@@ -154,6 +154,7 @@ def account_view(request, *args, **kwargs):
 		is_self = True
 		is_friend = False
 		request_sent = FriendRequestStatus.NO_REQUEST_SENT.value
+		# range : ENUM-> friends/friend_request_status.FriendRequestStatus
 		friend_requests = None
 		user = request.user
 		if user.is_authenticated and user != account:
@@ -165,24 +166,21 @@ def account_view(request, *args, **kwargs):
 				# Case 1 : req has been sent from them to user
 				# FriendRequestStatus.THEM_SENT_TO_YOU
 				if get_friend_request_or_false(sender=account, receiver=user)!=False:
-					request_sent = FriendRequestStatus.THEY_SENT_TO_YOU.value
+					request_sent = FriendRequestStatus.THEM_SENT_TO_YOU.value
 					context['pending_friend_request_id'] = get_friend_request_or_false(
 						sender=account, receiver=user).id
 
 				#Case 2: req has been sent from you to them
 				elif get_friend_request_or_false(sender=account, receiver=user)!=False:
-					request_sent=FriendRequestStatus.YOU_SENT_TO_THEM.value
+					request_sent = FriendRequestStatus.YOU_SENT_TO_THEM.value
 				# Case 3 : No request has been sent, FriendRequestStatus.NO_REQUEST_SENT
 				else:
 					request_sent =FriendRequestStatus.NO_REQUEST_SENT.value
-
-
-
 		elif not user.is_authenticated:
 			is_self = False
 		else:
 			try:
-				friend_requests = FriendRequestStatus.objects.filter(receiver=user, is_active=True)
+				friend_requests = FriendRequest.objects.filter(receiver=user, is_active=True)
 			except:
 				pass
 
