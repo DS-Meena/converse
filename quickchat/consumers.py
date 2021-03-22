@@ -47,7 +47,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # idhar access karna chata hu form
         # taki return kar saku room.html ko
         # par no request so no response
-        # form = quickForm()
+        # form = Form()
         # if form.is_valid():
         #     user_handle = user_handle = form.cleaned_data['user_handle']
         # else:
