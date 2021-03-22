@@ -83,7 +83,7 @@ urlpatterns = [
     path('quickchat/', include('quickchat.urls', namespace='quickchat')),
 
     # link to private chat links
-    path('privatechat/', include('privatechat.urls', namespace='privatechat')),
+    # path('privatechat/', include('privatechat.urls', namespace='privatechat')),
     
     # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     # templates added manually
