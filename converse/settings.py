@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'friends', # for the friend system app
     'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
+    'privatechat', # for chatting with friends
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,24 +125,9 @@ CHANNEL_LAYERS = {
 # }
 
 # postgresql
-# DB_NAME = "converse"
-# DB_USER = "dsm"
-# DB_PASSWORD = "Dharam@098"
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': DB_NAME,
-#         'USER': DB_USER,
-#         'PASSWORD': DB_PASSWORD,
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-# postgresql
-DB_NAME = 'converse'
-DB_USER = 'prasun'
-DB_PASSWORD = "zxcvbnm"
-
+DB_NAME = "converse"
+DB_USER = "dsm"
+DB_PASSWORD = "Dharam@098"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -152,6 +138,21 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+# postgresql
+# DB_NAME = 'converse'
+# DB_USER = 'prasun'
+# DB_PASSWORD = "zxcvbnm"
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'PASSWORD': DB_PASSWORD,
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
