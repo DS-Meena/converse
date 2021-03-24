@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'friends', # for the friend system app
     'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
+    'privatechat', # for chatting with friends
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

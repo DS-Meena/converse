@@ -3,14 +3,15 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from django.urls import path, re_path
 
-# trying using converse.routing file without asgi
-from room.consumers import ChatConsumer
+from privatechat.consumers import ChatConsumer
+from room.consumers import PublicChatConsumer
 
 application = ProtocolTypeRouter({
 	'websocket': AllowedHostsOriginValidator(
 		AuthMiddlewareStack(
 			URLRouter([
-					path('room/<room_name>/', ChatConsumer),
+					path('privatechat/<room_id>/', ChatConsumer),
+					path('room/<room_name>/', PublicChatConsumer),
 			])
 		)
 	),

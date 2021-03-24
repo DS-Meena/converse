@@ -11,6 +11,9 @@ import quickchat.routing
 from room.consumers import ChatConsumer
 from quickchat.consumers import ChatConsumer as CC
 
+# for private chat consumer
+from privatechat.consumers import ChatConsumer as PCC
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "converse.settings")
 
 
@@ -24,6 +27,9 @@ application = ProtocolTypeRouter({
         URLRouter([
             url(r'ws/room/(?P<room_name>\w+)/$', ChatConsumer.as_asgi()),
             url(r'ws/quickchat/(?P<room_name>\w+)/(?P<user_handle>\w+)/$', CC.as_asgi()),
+            
+            # trying to connect private websocket from here
+            url(r'ws/privatechat/(?P<room_id>\w+)/$', PCC.as_asgi()),
           ]
 
             # room.routing.websocket_urlpatterns,
