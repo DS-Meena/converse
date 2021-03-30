@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'room', # this one for chatroom (no database)
     'account',  # this one for user management
     'friends', # for the friend system app
-    'chatroom', # this is for the public chatrooms
+    # we didn't used this
+    # 'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
     'privatechat', # for chatting with friends
     
