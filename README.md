@@ -55,6 +55,9 @@ We will we using postgress to get our database things done.
 Now we create a new database.
 
 Follow the following steps after installing postgresql. 
+	
+	1. to activate the postgres 
+		- `psql postgres postgres` 
 
 	1. create a new database for our project
 		- `CREATE DATABASE converse;`
