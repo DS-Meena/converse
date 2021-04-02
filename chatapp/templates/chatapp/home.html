@@ -13,9 +13,45 @@ because django accesses it first
 	.my-grid-item{
 		border: 1px solid blue;
 	}
+	.column{
+		float:left;
+		width:100%;
+	}
+	.vl {
+  border-left: 6px solid gray;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
 </style>
 
 <!-- Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+
+ <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="column col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">Create Chatroom</h1>
+      <p class="lead fw-normal">Instantly host a chatroom without registering yourself.</p>
+    </div>
+
+<!--	 <div class="vl"></div>-->
+<!--	-->
+	 <div class="column col-md-6 p-lg-5 mx-auto my-5">
+		<form action="" method="post">
+
+  		<div class="form-group row">
+    	<div class="col-sm-6">
+      		{% csrf_token %}
+			{{form.as_p}}
+		<button type="submit" class="btn btn-primary">Quick Chat</button>
+    	</div>
+  		</div>
+		</form>
+
+    </div>
+  </div>
+
 <div class="container">
 	<!-- 
 	using an if else block to give different option
@@ -30,18 +66,10 @@ because django accesses it first
     	<input id="room-name-submit" type="button" value="Enter">
 
 	{% else %}
-		<h2>this will contain code to create a chatroom (limited time)(not logged in)</h2>
 
 		<!-- here will we ask of unknown user's user handle and room name -->
 		<!-- we will try to use forms -->
 
-		<form  action="" method="post">
-			{% csrf_token %}
-			{{form.as_ul}}
-			<input type="submit" value="Quick Chat">
-		</form>
-
-		<h5>Your handle: </h5>
 		<!-- <input id="user-input" type="text" size="100">
     	<br>
 		<h5>Room Name: </h5>
