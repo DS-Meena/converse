@@ -50,8 +50,11 @@ INSTALLED_APPS = [
     'room', # this one for chatroom (no database)
     'account',  # this one for user management
     'friends', # for the friend system app
-    'chatroom', # this is for the public chatrooms
+    # we didn't used this
+    # 'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
+    'privatechat', # for chatting with friends
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,7 +140,7 @@ CHANNEL_LAYERS = {
 #         'PORT': '5432',
 #     }
 # }
-# postgresql
+#postgresql
 DB_NAME = 'converse'
 DB_USER = 'prasun'
 DB_PASSWORD = "zxcvbnm"

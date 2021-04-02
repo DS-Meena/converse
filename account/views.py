@@ -22,27 +22,64 @@ from friends.utils import get_friend_request_or_false
 
 # This is basically almost exactly the same as friends/friend_list_view
 def account_search_view(request, *args, **kwargs):
+	# I THINK THE PROBLEM IS HERE 
+	# OF THE SHOWING NOT FRIENDS IN SEARCH RESULTS
 	context = {}
+
 	if request.method == "GET":
+		# get the search query
 		search_query = request.GET.get("q")
+
+		# atleast one character
 		if len(search_query) > 0:
+			# get the search results
+
 			search_results = Account.objects.filter(email__icontains=search_query).filter(
 				username__icontains=search_query).distinct()
+			
+			print("search results are", search_results)
 			user = request.user
 			accounts = []  # [(account1, True), (account2, False), ...]
+			
 			if user.is_authenticated:
 				# get the authenticated users friend list
+
 				auth_user_friend_list = FriendList.objects.get(user=user)
+				
+				# for each account
 				for account in search_results:
 					accounts.append((account, auth_user_friend_list.is_mutual_friend(account)))
+					
 				context['accounts'] = accounts
+				
+				# trying to add all friends 
+				# context['myfriends'] = auth_user_friend_list 
+
+			# all are authenticated
 			else:
 				for account in search_results:
-					accounts.append((account, False))
+					accounts.append((account, True))
 				context['accounts'] = accounts
 
+	print("so see friends", context)
 	return render(request, "account/search_results.html", context)
 
+# to search users (placed on header)
+# where this comes from (kha s aa gaya) (due to this it shows not friend)
+# def account_search_view(request, *args, **kwargs):
+# 	context = {}
+# 	if request.method == "GET":
+# 		search_query = request.GET.get("q")
+# 		if len(search_query) > 0:
+# 			search_results = Account.objects.filter(Q(username__icontains=search_query)|Q(email__icontains=search_query)).distinct()
+# 			user = request.user
+# 			print(search_results)
+# 			accounts = [] # [(account1, True), (account2, False), ...]
+# 			for account in search_results:
+# 				accounts.append((account, False)) # you have no friends yet
+# 			context['accounts'] = accounts
+				
+# 	return render(request, "account/search_results.html", context)
 
 def register_view(request, *args, **kwargs):
 	user = request.user
@@ -192,21 +229,6 @@ def account_view(request, *args, **kwargs):
 		context['friend_requests'] = friend_requests
 		return render(request, "account/account.html", context)
 
-# to search users (placed on header)
-def account_search_view(request, *args, **kwargs):
-	context = {}
-	if request.method == "GET":
-		search_query = request.GET.get("q")
-		if len(search_query) > 0:
-			search_results = Account.objects.filter(Q(username__icontains=search_query)|Q(email__icontains=search_query)).distinct()
-			user = request.user
-			print(search_results)
-			accounts = [] # [(account1, True), (account2, False), ...]
-			for account in search_results:
-				accounts.append((account, False)) # you have no friends yet
-			context['accounts'] = accounts
-				
-	return render(request, "account/search_results.html", context)
 
 # to edit account details method
 def edit_account_view(request, *args, **kwargs):
