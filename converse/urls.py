@@ -40,6 +40,7 @@ from account.views import (
     account_search_view,
 )
 
+
 # import the views from chatroom(app)
 # from chatroom.views import (
 #     # related to the public chatrooms
@@ -61,14 +62,14 @@ urlpatterns = [
     path('account/', include('account.urls', namespace='account')),
 
     # link to the friend system
-    path('friends/', include('friends.urls',namespace='friend')),
+    path('friends/', include('friends.urls', namespace='friend')),
 
     # add link for the user registration
     path('register/', register_view, name="register"),
 
     # link to the login and logout pages
     path('login/', login_view, name="login"), 
-    path('logout/', logout_view, name="logout"), 
+    path('logout/', logout_view, name="logout"),
 
     # link to the result of searach (header)
     path('search/', account_search_view, name="search"), 

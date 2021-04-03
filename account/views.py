@@ -29,13 +29,11 @@ def account_search_view(request, *args, **kwargs):
 	if request.method == "GET":
 		# get the search query
 		search_query = request.GET.get("q")
-
 		# atleast one character
 		if len(search_query) > 0:
 			# get the search results
 
-			search_results = Account.objects.filter(email__icontains=search_query).filter(
-				username__icontains=search_query).distinct()
+			search_results = Account.objects.filter(Q(email__icontains=search_query)|Q(username__startswith=search_query)).distinct()
 			
 			print("search results are", search_results)
 			user = request.user

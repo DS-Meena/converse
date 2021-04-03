@@ -49,7 +49,7 @@
     </ul>
 	  {% if request.user.is_authenticated %}
     <form class="form-inline my-2 my-lg-0" onsubmit="return executeQuery();">
-      <input class="form-control mr-sm-2" type="search" name="q" id="id_q_large" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" name="q" name="q" id="id_q" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 	</form>
 	  	{% else %}
@@ -200,9 +200,10 @@
 
 	function executeQuery() {
 		var query = ""
-		query = document.getElementById('id_q_small').value;
+		query = document.getElementById('id_q').value;
+		console.log(query)
 		if (query == ""){
-			query = document.getElementById('id_q_large').value;
+			query = document.getElementById('id_q').value;
 		}
 	    window.location.replace("{% url 'search' %}?q=" + query)
 	    return false

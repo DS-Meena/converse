@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     # 'chatroom', # this is for the public chatrooms
     'quickchat', # this is for the limited chatroom
     'privatechat', # for chatting with friends
-    
+     # for Blogs and Forums
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,7 +82,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # add link to the template directories
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
