@@ -40,11 +40,11 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand headtitle" >Converse</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link headlinks" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item ">
-		  <link type="text/html" class="nav-link headlinks" href="blogs/blogs">Blogs</link>
+      <li  class="nav-item ">
+		  <a class="nav-link headlinks" href="../../blogs/blogs">Blogs</a>
       </li>
     </ul>
 	  {% if request.user.is_authenticated %}
@@ -192,7 +192,9 @@
 <!--	</div>-->
 	<!-- END SMALL SCREENS -->
 <!--</div>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+</script>
 <!-- for the search users (on header) -->
 <script type="text/javascript">
 	// for drop down thing

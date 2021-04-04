@@ -20,17 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0689ea26-c5ab-46e8-9e2b-591ccf53f6da" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogs/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/template/add_post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/template/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/template/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/template/post_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/template/sidebar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogs/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/converse/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/converse/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/snippets/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/snippets/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
