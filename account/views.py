@@ -32,7 +32,7 @@ def account_search_view(request, *args, **kwargs):
 		# atleast one character
 		if len(search_query) > 0:
 			# get the search results
-
+			# YAHAN PE DEKH SEARCH QUERY IDHAR SE SAHI RESULTS FILTER KAREGI
 			search_results = Account.objects.filter(Q(email__icontains=search_query)|Q(username__startswith=search_query)).distinct()
 			
 			print("search results are", search_results)

@@ -80,7 +80,10 @@ urlpatterns = [
     # link to the chatroom pages (inside app) (second one)
     path('room/', include('room.urls', namespace='room')),
 
-    # link to the quick chat room 
+    #link to blogs
+    path('blogs/', include('blogs.urls',)),
+
+    # link to the quick chat room
     path('quickchat/', include('quickchat.urls', namespace='quickchat')),
 
     # link to private chat links
