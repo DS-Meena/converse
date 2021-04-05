@@ -23,14 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogs/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogs/template/add_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/template/add_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/template/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/template/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/template/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/template/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/converse/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/converse/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/snippets/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/snippets/header.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,5 +130,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="586" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1617109235559" />
+    <state x="815" y="154" width="672" height="678" key="search.everywhere.popup" timestamp="1617629357260">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="815" y="154" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1617629357260" />
   </component>
 </project>
