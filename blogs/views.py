@@ -19,19 +19,13 @@ class PostDetail(generic.DetailView):
 
 
 def add_post(request):
-    context = {}
+    # Username in user var
+    user = request.user
 
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                context['form'] = form
-                return redirect('home')
-            except:
-                pass
-        else:
-            return render(request, 'add_post.html', context)
-    else:
-        form=PostForm()
-        return render(request, 'add_post.html', context)
+    context = {}
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return render(request,'add_post.html',context)
+    context['form'] = form
+    return render(request, 'add_post.html', context)

@@ -1,10 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
+ {% load crispy_forms_tags %}
 
-<form action="POST" class="post-form">
+<style>
+    .form-design{
+        padding:2em;
+        border: 3px solid green;
+        margin-top: 3em;
+        margin-bottom:3em;
+    }
+</style>
+
+{% if request.user.is_authenticated %}
+<div class="container form-design col-md-6" >
+
+<form action="" method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        {{ form|crispy}}
+       <button type="submit" class="save btn btn-success" >Post!</button>
 </form>
-
+</div>
+{% endif %}
 {%endblock%}
