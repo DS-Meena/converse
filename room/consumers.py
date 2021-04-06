@@ -10,10 +10,30 @@ from datetime import datetime
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+# import the dictionary that we have created 
+# to store connected users and chatroom name
+from room.utils import *
+
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
+
+        # add this person in that dictionary
+        print("we have this", myDict)
+
+        # add the like this ["room_name"] = [username all]
+        # if first one to enter (create key)
+        if self.room_group_name not in myDict.keys(): 
+            myDict[self.room_group_name] = [self.scope['user'].username]
+        else:
+            myDict[self.room_group_name].append(self.scope['user'].username)
+
+        print("now we have", myDict)
+        print_dic()
+
+        # writing the python dict into a json
+        # send_dict = json.dumps(myDict)
 
         # Join room group
         await self.channel_layer.group_add(
@@ -23,11 +43,58 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
+        # if new user joinss 
+        # send message to group and also add to connected user list
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'chat_message',
+                # new user joins
+                'message': 'connected',
+                'update_list': True,
+
+                # trying to use user model
+                'username': self.scope['user'].username,
+                'user_id': self.scope['user'].id,
+            }
+        )
+
+        # Send message to WebSocket
+        # await self.send(text_data=json.dumps({
+        #     'update_list': True,
+        #     'connected_users': myDict[self.room_group_name],
+        # }))
+
     async def disconnect(self, close_code):
         # Leave room group
+
+        print("now we have", myDict)
+
+        # if user is leaving remov it from connected users list
+        myDict[self.room_group_name].remove(self.scope['user'].username)
+
+        print("now we have", myDict)
+        print_dic()
+
         await self.channel_layer.group_discard(
             self.room_group_name,
             self.channel_name
+        )
+
+        # if user leaves 
+        # send message to group and also remove from connected user list
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'chat_message',
+                # new user joins
+                'message': 'Disconnected',
+                'update_list': True,
+
+                # trying to use user model
+                'username': self.scope['user'].username,
+                'user_id': self.scope['user'].id,
+            }
         )
 
     # Receive message from WebSocket
@@ -53,6 +120,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': message,
+                'update_list': False,
+
                 # trying to use user model
                 'username': self.scope['user'].username,
                 'user_id': self.scope['user'].id,
@@ -72,6 +141,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'username': event['username'],
             'user_id': event['user_id'],
             'natural_timestamp': timestamp,
+
+            # details about connected users list
+            'update_list': event['update_list'],
+            'connected_users': myDict[self.room_group_name],
         }))
 
 # this function will get the time at which message sent

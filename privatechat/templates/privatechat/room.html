@@ -111,8 +111,12 @@
 
 <div class="container">
 	<div class="row">
+
+		<!-- start of chat log -->
 		<div class="col-sm-9 m-0 p-2">
 			<div class="card" id="id_chatroom_card">
+
+				<!-- header -->
 				<div class="d-flex flex-row align-items-center card-header" id="id_room_title">
 				<a class="d-flex flex-row" target="_blank" id="id_user_info_container">
 					<img class="profile-image rounded-circle img-fluid" id="id_other_user_profile_image" src="{% static 'icons/account.png' %}">
@@ -170,12 +174,18 @@
 				</div>
 			</div>
 		</div>
+		<!-- end of chat log  -->
 
+		<!-- start of friend list -->
 		<div class="col-sm-3 m-0 p-2">
 			<div class="card">
+
+				<!-- header of list -->
 				<div class="d-flex flex-row align-items-center card-header">
 					<h3 >My Friends</h3>
 				</div>
+				
+				<!-- body of list -->
 				<div class="card-body p-1">	
 					<div class="d-flex flex-column friends-list-container ">
 						<!-- this is list of my friends -->
@@ -196,8 +206,11 @@
 
 					</div>
 				</div>
+
 			</div>
 		</div>
+		<!-- end of friend list -->
+
 	</div>
 </div>
 

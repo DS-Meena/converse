@@ -11,7 +11,7 @@ because django accesses it first
 <style type="text/css">
     /*for the append function*/
     .chat-log-class {
-    height: 500px;
+        height: 500px;
         overflow-x: hidden;
         overflow-y: auto;
         padding: 10px;
@@ -50,47 +50,93 @@ because django accesses it first
     .my-grid-item{
         border: 1px solid blue;
     }
+
+    /*this styles are for the list of users connect*/
+    .users-container:hover{
+        background: var(--main-background-color);
+        cursor: pointer;
+    }
+    .users-list-container{
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+    .logsize{
+        min-width: 800px;
+    }
+    .listsize{
+        min-width: 300px;
+    }
+
 </style>
 
-<!-- this contains the messages -->
-<div class="card mt-3">
+<div class="container">
+    <div class="row">
+        
+        <!-- start of chat log -->
+        <div class="col-sm-3 m-0 p-2 logsize">
+            <div class="card">
 
-    <!-- head of the chat window -->
-    <div class="card-header">
-        <div class="d-flex flex-row justify-content-between">
-            <!-- name of current room -->
-            <h3 class="">{{room_name}}</h3>
-        </div>
-    </div>
-
-    
-    <!-- body of the chat window -->
-    <div class="car-body p-1">
-        <div class="d-flex flex-column">
-            
-            <!-- main part -->
-
-            <!-- for the append function -->
-            <div class="d-flex chat-log-class" id="chat-log">
+                <!-- head of the chat window -->
+                <div class="card-header d-flex flex-row align-items-center">
+                    <div class="d-flex flex-row justify-content-between">
                     
-            </div>
+                    <!-- name of current room -->
+                    <h3 class="">{{room_name}}</h3>
+                    </div>
+                </div>
+                
+                <!-- body of the chat window -->
+                <div class="car-body p-1">
+                    <div class="d-flex flex-column">
             
-            <!-- message send input -->
-            <div class="d-flex">
+                    <!-- main part -->
 
-                <!-- write here -->
-                <input class="flex-grow-1" id="chat-message-input" type="text" size="100">
+                    <!-- for the append function -->
+                    <div class="d-flex chat-log-class" id="chat-log">
+                    
+                    </div>
+            
+                    <!-- message send input -->
+                    <div class="d-flex">
 
-                <!-- send button -->
-                <button class="btn btn-primary">
+                    <!-- write here -->
+                    <input class="flex-grow-1" id="chat-message-input" type="text">
+
+
+                    <!-- send button -->
+                    <button class="btn btn-primary">
                     <span id="chat-message-submit">Send</span>
-                </button>
-            </div>
+                    </button>
+                    </div>
 
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <!-- end of chat log -->
+
+    <!-- here will are trying to display the name of users that are present in the chatroom -->
+
+    <div class="col-sm-3 m-0 p-2 listsize">
+            <div class="card">
+
+                <!-- header of list -->
+                <div class="d-flex flex-row align-items-center card-header">
+                    <h3 >Members in room</h3>
+                </div>
+
+                <!-- body of list -->
+                <div class="card-body p-1"> 
+                    <div class="d-flex flex-column users-list-container" id="users-list">
+                        <!-- this will contain list of my connected users -->
+                    </div>
+                </div>
+            </div>
     </div>
 
     {{ room_name|json_script:"room-name" }}
+    </div>
 </div>
 
 <!-- this contacts with web socket and send and receive messages -->
@@ -145,19 +191,90 @@ because django accesses it first
         // append function to add new message
         function appendChatMessage(data, maintainPosition, isNewMessage)
         {
-            message = data['message']
-            timestamp = data['natural_timestamp']
+            // check if it is about connected users list
+            if (data['update_list'])
+                createUsersList(data['connected_users'])
+            
+            // always getting message wheter typed, leaving, joining
+            if(true)
+            {
+                message = data['message']
+                timestamp = data['natural_timestamp']
 
-            // data should contain username
-            user_id = data['user_id']
-            uName = data['username']
+                // data should contain username
+                user_id = data['user_id']
+                uName = data['username']
 
-            var username = uName + ':';
-            var msg = message + '\n';
+                var username = uName + ':';
+                var msg = message + '\n';
 
-            console.log("messae is"+msg);
-            // create a message element (looks good)
-            createChatMessageElement(msg, username, user_id, timestamp, maintainPosition, isNewMessage)
+                console.log("messae is"+msg);
+                // create a message element (looks good)
+                createChatMessageElement(msg, username, user_id, timestamp, maintainPosition, isNewMessage)
+
+                console.log("after adding message")
+            }
+            
+        }
+
+        // this function will modify the connected users element list
+        function createUsersList(connected_users)
+        {
+            console.log("inside list")
+            // get the users list container
+            var userList_l = document.getElementById("users-list")
+            var userList = document.createElement("users-list-container")
+
+            console.log("connected users are: ", connected_users)
+
+            // append all users in that list
+            var len = connected_users.length;
+
+            for (i=0; i < len; i++)
+            {   
+                user = connected_users[i]
+                console.log("user name is: ", user)
+
+                var my_user = document.createElement("div")
+                my_user.classList.add("users-container")
+                my_user.classList.add("d-flex")
+                my_user.classList.add("flex-row")
+                my_user.classList.add("p-2")
+                my_user.classList.add("flex-grow-1")
+
+                var my_user_name = document.createElement("div")
+                my_user_name.classList.add("d-flex")
+                my_user_name.classList.add("flex-column")
+
+                var user_name_span = document.createElement("span")
+                user_name_span.classList.add("username-span")
+                // most importantly add users
+                var name = document.createElement("p")
+                name.innerHTML = user
+                name.classList.add("msg-p")
+
+                // add name to name span
+                user_name_span.appendChild(name)
+
+                // append name
+                my_user_name.append(user_name_span)
+
+                // append name to user
+                my_user.append(my_user_name)
+
+                // append to user list
+                userList.appendChild(my_user)
+            }
+
+            // if (userList_l != null)
+            //     userList_l.innerHTML = userList;
+            // else
+            console.log(userList)
+            // we want to change it (because appending make its incrementing)
+            // with redundant names
+            userList_l.innerHTML = userList.innerHTML
+            // userList_l.appendChild(userList)
+
         }
 
         // this functions creates a message element (good look) and also insert (not forgot)

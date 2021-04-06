@@ -4,13 +4,7 @@ from .models import Post
 
 # creating a form
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
-        exclude = ('slug', 'author',)
-
-    def clean(self):
-        cleaned_data = super(PostForm, self).clean()
-        title = cleaned_data.get('title')
-        content = cleaned_data.get('content')
-        if not title or not content:
-            raise forms.ValidationError('You have to write something!')
+        fields = "__all__"
