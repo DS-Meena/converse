@@ -12,7 +12,7 @@ from chatapp.forms import quickForm
 
 # import the dictionary that we have created 
 # to store connected users and chatroom name
-from room.utils import *
+from quickchat.utils import *
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
