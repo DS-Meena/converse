@@ -1,10 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+ {% load crispy_forms_tags %}
 
-<form action="POST" class="post-form">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+    .form-design{
+        padding:2em;
+        border: 3px solid green;
+        margin-top: 1.5em;
+        margin-bottom:3em;
+    }
+    .phead{
+        margin: 1em 1em;
+        font-size: 2.5rem;
+        font-family: 'Merriweather', serif;
+        text-align:center;
+    }
+</style>
+
+{% if request.user.is_authenticated %}
+<div class="phead">Add Your Post</div>
+<div class="container form-design col-md-6" >
+
+<form action="" method="post">
         {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        {{ form|crispy}}
+       <button type="submit" class="save btn btn-success" >Post!</button>
 </form>
-
+</div>
+{% endif %}
 {%endblock%}
