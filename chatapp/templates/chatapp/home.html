@@ -34,13 +34,19 @@ because django accesses it first
 	using an if else block to give different option
 	for logged in and logged out -->
 	{% if request.user.is_authenticated %}
-
-		What chat room would you like to enter?<br>
-
+ <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Join a Chatroom</h1>
+        <p class="lead font-weight-normal">Enter the chatroom name you would like to join.</p>
 		<!-- ask the chatroom name from user -->
-    	<input id="room-name-input" type="text" size="100">
-    	<br> 
-    	<input id="room-name-submit" type="button" value="Enter">
+    	<input class="form-control" id="room-name-input" type="text" size="100" placeholder="Enter name here...">
+    	<br>
+		  <button class="btn btn-success" id="room-name-submit" type="button" >Join</button>
+
+	  </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+    </div>
 
 	{% else %}
 

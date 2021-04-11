@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0689ea26-c5ab-46e8-9e2b-591ccf53f6da" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/snippets/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/snippets/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatapp/templates/chatapp/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/chatapp/templates/chatapp/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/converse/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/converse/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,28 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.project" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.lab11_lr0">
+    <configuration name="lab11_lr0" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="converse" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop/Sem6/Compiler Design CSB 353/Lab/Lab11" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/Sem6/Compiler Design CSB 353/Lab/Lab11/lab11_lr0.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="converse" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.lab11_lr0" />
         <item itemvalue="Python.manage" />
       </list>
     </recent_temporary>
@@ -103,22 +129,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="745" height="213" key="GridCell.Tab.0.bottom" timestamp="1614973842135">
+    <state width="1515" height="121" key="GridCell.Tab.0.bottom" timestamp="1618064037228">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="745" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1614973842135" />
-    <state width="745" height="213" key="GridCell.Tab.0.center" timestamp="1614973842135">
+    <state width="1515" height="121" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1618064037228" />
+    <state width="1515" height="121" key="GridCell.Tab.0.center" timestamp="1618064037228">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="745" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1614973842135" />
-    <state width="745" height="213" key="GridCell.Tab.0.left" timestamp="1614973842134">
+    <state width="1515" height="121" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1618064037228" />
+    <state width="1515" height="121" key="GridCell.Tab.0.left" timestamp="1618064037227">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="745" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1614973842134" />
-    <state width="745" height="213" key="GridCell.Tab.0.right" timestamp="1614973842135">
+    <state width="1515" height="121" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1618064037227" />
+    <state width="1515" height="121" key="GridCell.Tab.0.right" timestamp="1618064037228">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="745" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1614973842135" />
+    <state width="1515" height="121" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1618064037228" />
     <state x="386" y="120" key="SettingsEditor" timestamp="1616237891558">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
