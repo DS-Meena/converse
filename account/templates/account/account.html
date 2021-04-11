@@ -65,12 +65,16 @@
 	.message-btn-text{
 		font-weight: 500;
 	}
+	.container-fluid{
+	margin-top:20px;
+}
+
 </style>
 
 <div class="container-fluid">
 	<div class="d-flex flex-row justify-content-center flex-wrap align-items-start">
 
-		<div class="card profile-card m-2">
+		<div class="card profile-card col-md-3 m-2">
 		  <div class="card-body">
 		  	<div class="d-flex flex-column justify-content-center p-4">
 		  		<div class="image-container mx-auto mb-4">
@@ -102,7 +106,7 @@
 		</div>
 
 		{% if request.user.is_authenticated %}
-		<div class="d-flex flex-column mb-4">
+		<div class="d-flex flex-column mb-4 col-md-2">
 
 			<!-- THEM to YOU -->
 			{% if request_sent == 0 %}

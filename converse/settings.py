@@ -222,5 +222,5 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10mb = 10 * 1024 *1024
 MONGO_CLIENT = pymongo.MongoClient()
 
 # session settings
-SESSION_COOKIE_AGE = 5 * 60 # maybe session limit
+SESSION_COOKIE_AGE =  1209600 # Session Cookie Age 2 weeks
 SESSION_SAVE_EVERY_REQUEST = True
