@@ -47,6 +47,7 @@ AUTHENTICATION_BACKENDS = (
 INSTALLED_APPS = [
     # add the name of your app 
     'chatapp',
+    'fontawesome-free',
     'room', # this one for chatroom (no database)
     'account',  # this one for user management
     'friends', # for the friend system app
