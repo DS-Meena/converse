@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post
+from .models import Post, Comment
 
 # creating a form
 class PostForm(forms.ModelForm):
@@ -14,3 +14,8 @@ class PostForm(forms.ModelForm):
         content = cleaned_data.get('content')
         if not title or not content:
             raise forms.ValidationError('You have to write something!')
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ('name', 'post', 'active')
