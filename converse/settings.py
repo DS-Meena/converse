@@ -85,7 +85,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # add link to the template directories
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'blogs/template'),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -184,7 +183,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#Set time to GMT +5:30
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

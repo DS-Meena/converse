@@ -16,6 +16,9 @@ from django.db.models import Q
 from friends.friend_request_status import FriendRequestStatus
 from friends.models import FriendList,FriendRequest
 
+# To fetch Bloglist
+from blogs.models import Post
+
 # To get friend req state
 from friends.utils import get_friend_request_or_false
 
@@ -183,7 +186,16 @@ def account_view(request, *args, **kwargs):
 		friends = friend_list.friends.all()
 		context['friends'] = friends
 
-
+	# Account's Blog list Section Logic
+		try:
+			# if blogs exist on user profile
+			blog_list = Post.objects.filter(author=account)
+			print(blog_list)
+		except Post.DoesNotExist:
+			pass
+			# if it doesn't exist then we need need to create it
+			
+		context['blogs']= blog_list
 
 		# Define template variables
 		is_self = True

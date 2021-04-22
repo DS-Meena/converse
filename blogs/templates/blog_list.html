@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+	.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+	.profile-image{
+		max-height: 100px;
+		max-width: 100px;
+		border-radius: 12px;
+	}
+	a{
+		color:inherit;
+	}
+	.text-style{
+		font-size: 18px;
+		color:black;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
+	.card{
+		border-radius: 12px;
+	}
+	.friends-text{
+		color: #000;
+		font-weight: 500;
+	}
+	.friends-text-container{
+		border: 1px solid #cccccc;
+		border-radius: 12px;
+	}
+	.friends-btn:hover {
+		background-color: #bfbfbf;
+		border-color: #bfbfbf;
+	}
+	.dropdown-toggle::after { 
+		content: none; 
+	}
+	.checkmark-icon{
+		color: green;
+	}
+	.cancel-icon{
+		color: red;
+	}
+	.container{
+		margin-top:20px;
+	}
+	.header{
+		display: flex;
+		font-size: 36px;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-weight: 600;
+		justify-content: center;
+	}
+</style>
+<div class="container">
+	{% if blogs %}
+	<div class="flex container mx-2 my-3 header">
+		Your Posts
+	</div>
+	<table class="table table-success">
+		<thead class="thead-dark">
+		  <tr>
+			<th scope="col">S.No.</th>
+			<th scope="col">Title</th>
+			<th scope="col">Posted On</th>
+			<th scope="col">Status</th>
+			<th scope="col">Change Status</th>
+		  </tr>
+		</thead>
+		<tbody class="text-style">
+			{% for post in blogs %}
+			<tr>
+			<th scope="row">{{forloop.counter}}</th>
+			<td>	<a class="profile-link" href="{% url 'blogs:post_detail' post.slug  %}">
+					{{post.title}}
+			</a>
+		</td>
+			<td>{{post.created_on}}</td>
+			{% if post.status %}
+				<td>Published</td>
+			{% else %}
+				<td>Drafted</td>
+				{% endif %}
+
+			<td>
+				<label class="switch">
+					<input type="checkbox" checked>
+					<span class="slider round"></span>
+				  </label>
+			</td>
+			</tr>
+		  {% endfor %}
+		</tbody>
+	  </table>
+	  		{% else %} <!-- If no blogs -->
+		
+			<div class="d-flex flex-row flex-grow-1 justify-content-center align-items-center p-4">
+			<p>You haven't written any blogs yet.</p>
+		</div>
+		{% endif %}
+	</div>
+	
+</div>
+
+{% endblock content %}
