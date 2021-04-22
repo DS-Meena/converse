@@ -116,7 +116,7 @@ because django accesses it first
         </div>
         <!-- end of chat log -->
 
-    <!-- here will are trying to display the name of users that are present in the chatroom -->
+    <!-- here we are trying to display the name of users that are present in the chatroom -->
 
     <div class="col-sm-3 m-0 p-2 listsize">
             <div class="card">
@@ -220,7 +220,7 @@ because django accesses it first
         // this function will modify the connected users element list
         function createUsersList(connected_users)
         {
-            console.log("inside list")
+            console.log("inside list");
             // get the users list container
             var userList_l = document.getElementById("users-list")
             var userList = document.createElement("users-list-container")
@@ -232,7 +232,8 @@ because django accesses it first
 
             for (i=0; i < len; i++)
             {   
-                user = connected_users[i]
+                user = connected_users[i][0]
+                id = connected_users[i][1]
                 console.log("user name is: ", user)
 
                 var my_user = document.createElement("div")
@@ -261,6 +262,14 @@ because django accesses it first
 
                 // append name to user
                 my_user.append(my_user_name)
+
+                // add the link to user account also
+                // expensive feature
+                var user_url = document.createElement("a")
+                user_url.href = '/account/'+ id
+                user_url.innerHTML = 'view'
+
+                my_user.appendChild(user_url)
 
                 // append to user list
                 userList.appendChild(my_user)

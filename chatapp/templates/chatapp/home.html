@@ -34,12 +34,19 @@ because django accesses it first
 
 <!-- Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
 
+<div class="container">
+	<div class="row">
+<!-- 
+		<div class="col-sm-3 m-0 p-2">
+			<div class="card">
+ -->
 
 	<!-- 
 	using an if else block to give different option
 	for logged in and logged out -->
 	{% if request.user.is_authenticated %}
- <div class="bgimg position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+	
+ 	<div class="bgimg position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Join a Chatroom</h1>
         <p class="lead font-weight-normal">Enter the chatroom name you would like to join.</p>
@@ -47,12 +54,55 @@ because django accesses it first
     	<input class="form-control" id="room-name-input" type="text" size="100" placeholder="Enter name here...">
     	<br>
 		  <button class="btn btn-success col-md-3" id="room-name-submit" type="button" >Join</button>
-
+		  
 	  </div>
+      
       <div class="product-device box-shadow d-none d-md-block"></div>
       <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+      <div class="col-sm-3 m-0 p-2 listsize">
+            <div class="card">
+
+                <!-- header of list -->
+                <div class="d-flex flex-row align-items-center card-header">
+                    <h3 >Active chatrooms</h3>
+                </div>
+
+                <!-- body of list -->
+                <div class="card-body p-1"> 
+                    <div class="d-flex flex-column users-list-container" id="users-list">
+                        <!-- this will contain list of my connected users -->
+                        <!-- so we can access the room names here only -->
+
+                      {% for room in rooms%}
+                        <div class="d-flex flex-row p-2 flex-grow-1">
+                          <div class="flex-column">
+                            <span>
+                              <p>
+                                <!-- check if chatroom is not empty -->
+                                {% if  room.1 > 0 %}
+                                  {{room.0}}
+                                  
+                                  <h9>
+                                  >  users: {{room.1}}
+                                  <a href="/room/{{room.0}}">Join</a>
+                                  </h9>
+                                {% endif %}
+                              </p>
+                            </span>
+                          </div>
+                        </div>
+
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
     </div>
 
+
+    </div>
+
+    <!-- if not authenticated  -->
 	{% else %}
 
 		<!-- here will we ask of unknown user's user handle and room name -->
@@ -88,9 +138,53 @@ because django accesses it first
     </div>
   </div>
 
+      <div class="col-sm-3 m-0 p-2 listsize">
+            <div class="card">
+
+                <!-- header of list -->
+                <div class="d-flex flex-row align-items-center card-header">
+                    <h3 >Active chatrooms</h3>
+                </div>
+
+                <!-- body of list -->
+                <div class="card-body p-1"> 
+                    <div class="d-flex flex-column users-list-container" id="users-list">
+                        <!-- this will contain list of my connected users -->
+                        <!-- so we can access the room names here only -->
+                      {% for room in rooms %}
+                        <div class="d-flex flex-row p-2 flex-grow-1">
+                          <div class="flex-column">
+                            <span>
+                              <p>
+                                <!-- check if chatroom is not empty -->
+                                {% if  room.1 > 0 %}
+                                  {{room.0}}
+                                  
+                                  <h9>
+                                  >  users: {{room.1}}
+                                  </h9>
+                                {% endif %}
+
+                              </p>
+                            </span>
+                          </div>
+                        </div>
+
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+
 	{% endif %}	
+<!-- </div>
+</div> -->
+	<!-- here we are trying to display the room names that are active-->
 
 
+
+	</div>
+</div>
 
 <script>
 	// different script for different authenticated and unauthenticated

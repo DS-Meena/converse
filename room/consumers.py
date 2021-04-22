@@ -14,6 +14,10 @@ User = get_user_model()
 # to store connected users and chatroom name
 from room.utils import *
 
+# get the accounts and friends
+from account.models import Account
+
+
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -24,16 +28,20 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         # add the like this ["room_name"] = [username all]
         # if first one to enter (create key)
-        if self.room_group_name not in myDict.keys(): 
-            myDict[self.room_group_name] = [self.scope['user'].username]
+        # CHANGE - Store the user id also
+        if self.room_name not in myDict.keys(): 
+            myDict[self.room_name] = [[self.scope['user'].username, self.scope['user'].id]]
         else:
-            myDict[self.room_group_name].append(self.scope['user'].username)
+            myDict[self.room_name].append([self.scope['user'].username, self.scope['user'].id])
 
         print("now we have", myDict)
         print_dic()
 
         # writing the python dict into a json
         # send_dict = json.dumps(myDict)
+
+        # define first then call
+        # find_accounts(self)
 
         # Join room group
         await self.channel_layer.group_add(
@@ -71,7 +79,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print("now we have", myDict)
 
         # if user is leaving remov it from connected users list
-        myDict[self.room_group_name].remove(self.scope['user'].username)
+        myDict[self.room_name].remove([self.scope['user'].username, self.scope['user'].id])
 
         print("now we have", myDict)
         print_dic()
@@ -135,6 +143,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # try to calcualte the timestamp also
         timestamp = calculate_timestamp(timezone.now())
 
+        
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
@@ -144,7 +153,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
             # details about connected users list
             'update_list': event['update_list'],
-            'connected_users': myDict[self.room_group_name],
+
+            # CHANGE - now the list is a tuple of (name, id)
+            'connected_users': myDict[self.room_name],
         }))
 
 # this function will get the time at which message sent

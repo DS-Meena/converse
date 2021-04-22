@@ -29,10 +29,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
         user_handle = self.scope['url_route']['kwargs']['user_handle']
         print(user_handle)
 
-        if self.room_group_name not in myDict.keys(): 
-            myDict[self.room_group_name] = [user_handle]
+        if self.room_name not in myDict.keys(): 
+            myDict[self.room_name] = [user_handle]
         else:
-            myDict[self.room_group_name].append(user_handle)
+            myDict[self.room_name].append(user_handle)
 
         print("now we have", myDict)
         print_dic()
@@ -69,7 +69,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print(user_handle)
 
         # if user is leaving remov it from connected users list
-        myDict[self.room_group_name].remove(user_handle)
+        myDict[self.room_name].remove(user_handle)
 
         print("now we have", myDict)
         print_dic()
@@ -143,7 +143,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
             # details about connected users list
             'update_list': event['update_list'],
-            'connected_users': myDict[self.room_group_name],
+            'connected_users': myDict[self.room_name],
         }))
 
 # this function will get the time at which message sent
