@@ -42,7 +42,10 @@ def add_post(request):
         post.slug = slugify(post.title)
         post.author = user
         post.save()
-        return render(request, 'add_post.html', context)
+        # this should go to all blogs page after adding post
+        return redirect('/blogs/all/')
+        # return render(request, 'add_post.html', context)
+        
     context['form'] = form
     return render(request, 'add_post.html', context)
 
