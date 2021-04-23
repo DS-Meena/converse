@@ -65,9 +65,9 @@
 				{% endif %}
 
 			<td>
-				<div class="btn btn-success" onclick={onChange()}>
+				<a class="btn btn-success" href="{% url 'blogs:update_status' post.slug %}">
 					Change
-				</div>
+				</a>
 			</td>
 			</tr>
 		  {% endfor %}
@@ -83,15 +83,6 @@
 	
 </div>
 
+
 {% endblock content %}
 
-
-
-<script type="text/javascript">
-
-	function onChange(){
-		location.reload();
-	}
-
-	
-</script>

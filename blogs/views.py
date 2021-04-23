@@ -99,7 +99,7 @@ def blog_list_view(request, *args, **kwargs):
                 return HttpResponse("That user does not exist.")
             try:
                 blog_list = Post.objects.filter(author=this_user)
-                print(blog_list)
+               # print(blog_list)
             except Post.DoesNotExist:
                 return HttpResponse(f"Could not find any posts for {this_user.username}")
 
@@ -112,3 +112,18 @@ def blog_list_view(request, *args, **kwargs):
     else:
         return HttpResponse("You must be logged in to view the blog list.")
     return render(request, "blog_list.html", context)
+
+def updateStatus(request, slug):
+    post = Post.objects.get(slug=slug)
+    post.status = not post.status
+    print(post.status)
+    post.save()
+    blogs = []
+    user = request.user
+    blog_list = Post.objects.filter(author=user)
+    for blog in blog_list.all():
+        blogs.append((blog))
+    context = {'blogs':blogs}
+    
+    return render(request, 'blog_list.html', context)
+  
