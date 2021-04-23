@@ -7,7 +7,7 @@ from blogs.views import blog_list_view
 app_name = 'blogs'
 
 urlpatterns = [
-    path('', views.PostList.as_view()),
+    path('', views.PostList.as_view(), name="blogs"),
     # path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('add_post/', add_post, name='add_post'),
     path('<slug:slug>/', views.post_detail, name="post_detail"),
