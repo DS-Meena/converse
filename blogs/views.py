@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from .models import Post
 from .forms import PostForm, CommentForm
+from account.models import Account
 
 
 # Create your views here.
@@ -83,3 +84,31 @@ def post_detail(request, slug):
             "comment_form": comment_form,
         },
     )
+
+
+def blog_list_view(request, *args, **kwargs):
+    context = {}
+    user = request.user
+    if user.is_authenticated:
+        user_id = kwargs.get("user_id")
+        if user_id:
+            try:
+                this_user = Account.objects.get(pk=user_id)
+                context['this_user'] = this_user
+            except Account.DoesNotExist:
+                return HttpResponse("That user does not exist.")
+            try:
+                blog_list = Post.objects.filter(author=this_user)
+                print(blog_list)
+            except Post.DoesNotExist:
+                return HttpResponse(f"Could not find any posts for {this_user.username}")
+
+            blogs = []  # [(friend1, True), (friend2, False), ...]
+            # get the authenticated users friend list
+            auth_user_friend_list = Post.objects.filter(author=this_user)
+            for blog in blog_list.all():
+                blogs.append((blog))
+            context['blogs'] = blogs
+    else:
+        return HttpResponse("You must be logged in to view the blog list.")
+    return render(request, "blog_list.html", context)

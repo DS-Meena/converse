@@ -68,6 +68,10 @@
 	.container-fluid{
 	margin-top:20px;
 }
+.iconstyle{
+   color: red;
+    font-size: 22px;
+}
 
 </style>
 
@@ -188,10 +192,18 @@
 				</div>
 			{% endif %}
 
-		</div>
+			<div class="card m-2 px-4 pb-4">
+				<div class="d-flex flex-column pt-4">
+					<a href="{% url 'blogs:list' user_id=id %}">
+						<div class="d-flex flex-row align-items-center justify-content-center icon-container">
+							<i class="far fa-newspaper mr-2 iconstyle"></i>
+							<span class="friend-text"> Blogs ({{blogs|length}})</span>
+						</div>
+					</a>
+				</div>
+				</div>
 		{% endif %}
-
-		
+		</div>
 	</div>
 </div>
 

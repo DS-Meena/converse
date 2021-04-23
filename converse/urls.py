@@ -81,7 +81,7 @@ urlpatterns = [
     path('room/', include('room.urls', namespace='room')),
 
     #link to blogs
-    path('blogs/', include('blogs.urls')),
+    path('blogs/', include('blogs.urls', namespace='blogs')),
 
     # link to the quick chat room
     path('quickchat/', include('quickchat.urls', namespace='quickchat')),

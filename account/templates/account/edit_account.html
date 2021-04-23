@@ -6,9 +6,10 @@
 
 <style type="text/css">
 	.image-container{
-		max-width: 250px;
-		height: auto;
-		position: relative;
+		margin: auto;
+		max-width: 60px;
+		height: 60px;
+		justify-content : center;
 	}
 	.field-heading{
 		color: #737373;
@@ -31,6 +32,10 @@
 	.material-icons:hover{
 		cursor: pointer;
 	}
+
+	.container-fluid{
+		margin-top:5em;
+	}
 </style>
 
 <div class="container-fluid">
@@ -38,14 +43,11 @@
 		<div class="card profile-card">
 		  <div class="card-body">
 		  	<div class="d-flex flex-column justify-content-center p-4">
-		  		<div class="mb-2" id="id_image_crop_confirm">
-		  			<span id="id_cancel" class="material-icons">cancel</span>
-		  			<span id="id_confirm" class="material-icons">check</span>
-		  		</div>
+
 		  		<div class="image-container" id="id_image_container">
-	  				<img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="id_profile_image" src="{{form.initial.profile_image.url}}" alt="codingwithmitch logo">
+	  				<img class="border border-dark rounded-circle img-fluid mx-auto profile-image" id="id_profile_image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-DjoQ3H0LFCWXLurl6qeHzGnbox2_cJTAmg&usqp=CAU" >
 					<div class="middle" id="id_middle_container">
-						<div class="text" id="id_text">Edit</div>
+
 					</div>
 		  		</div>
 		  		<form class="form-signin" method="post">{% csrf_token %}
