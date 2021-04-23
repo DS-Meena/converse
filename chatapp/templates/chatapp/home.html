@@ -13,6 +13,42 @@ because django accesses it first
 	.my-grid-item{
 		border: 1px solid blue;
 	}
+	/*this styles are for the list of users connect*/
+    .users-container:hover{
+        background: var(--main-background-color);
+        cursor: pointer;
+    }
+    .users-list-container{
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+    /*for the chatrooms list */
+    .for-hover:hover {
+    	background: var(--main-background-color);
+        cursor: pointer;
+	}
+	a, a:hover, a:focus, a:active {
+     text-decoration: none;
+     color: inherit;
+ 	}
+ 	.right-shift {
+ 		margin-right: 0px;
+ 	}
+
+    .msg-p{
+        font-weight: 450;
+        margin-top: 5px;
+        margin-bottom: auto;
+        margin-left: 5px;
+        margin-right: 5px;
+        white-space: normal;
+        -ms-word-break: break-all;
+        word-break: break-all;
+    }
+    .message-container{
+        margin-top: 10px;
+        justify-content: start;
+    }
 	.column{
 		float:left;
 		width:100%;
@@ -82,6 +118,47 @@ text-shadow: -1px 1px 0 #000,
 	  </div>
       <div class="product-device box-shadow d-none d-md-block"></div>
       <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+
+        <!-- shows the active chatrooms -->
+        <div class="col-sm-3 m-0 p-2 listsize">
+            <div class="card">
+
+                <!-- header of list -->
+                <div class="d-flex flex-row align-items-center card-header">
+                    <h3 >Active chatrooms</h3>
+                </div>
+
+                <!-- body of list -->
+                <div class="card-body p-1"> 
+                    <div class="d-flex flex-column users-list-container" id="users-list">
+                        <!-- this will contain list of my connected users -->
+                        <!-- so we can access the room names here only -->
+                      {% for room in rooms%}
+                        {% if  room.1 > 0 %}
+                                  <a href="/room/{{room.0}}">
+                        <div class="d-flex flex-row p-2 flex-grow-1 for-hover">
+                          <div class="flex-column">
+                              <p> <b>
+                            <span>
+                                <!-- check if chatroom is not empty -->
+                                  {{room.0}}
+                                  <h9 class="right-shift">
+                                   {{room.1}}
+                                  </h9>
+                                <b>
+                              </p>
+                            </span>
+                          </div>
+                        </div>
+                              </a>
+
+						{% endif %}
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 	{% else %}
@@ -117,6 +194,46 @@ text-shadow: -1px 1px 0 #000,
 		</form>
 
     </div>
+
+    <!-- show the active chatrooms list -->
+    <div class="col-sm-3 m-0 p-2 listsize">
+            <div class="card">
+
+                <!-- header of list -->
+                <div class="d-flex flex-row align-items-center card-header">
+                    <h3 >Active chatrooms</h3>
+                </div>
+
+                <!-- body of list -->
+                <div class="card-body p-1"> 
+                    <div class="d-flex flex-column users-list-container" id="users-list">
+                        <!-- this will contain list of my connected users -->
+                        <!-- so we can access the room names here only -->
+                        <!-- <p>room name  &emsp;&emsp;&emsp;&emsp; No. of users</p> -->
+                      {% for room in rooms %}
+                                {% if  room.1 > 0 %}
+                        <div class="d-flex flex-row p-2 flex-grow-1">
+                          <div class="flex-column">
+                            <span>
+                              <p><b>
+                                <!-- check if chatroom is not empty -->
+                                  {{room.0}}
+                                  <h9>
+                                   {{room.1}}
+                                  </h9>
+                                <b>
+                              </p>
+                            </span>
+                          </div>
+                        </div>
+
+                                {% endif %}
+                      {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </div>
+
   </div>
 
 	{% endif %}	
@@ -138,6 +255,7 @@ text-shadow: -1px 1px 0 #000,
         var roomName = document.querySelector('#room-name-input').value;
         window.location.pathname = '/room/' + roomName + '/';
     };
+
 	{% else %}
 		// for the limited time room inputs
 	// document.querySelector('#room-input').focus();

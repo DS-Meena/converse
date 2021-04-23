@@ -28,6 +28,10 @@ because django accesses it first
     .profile-image:hover{
         cursor: pointer;
     }
+    a, a:hover, a:focus, a:active {
+     text-decoration: none;
+     color: inherit;
+    }
     .msg-p{
         font-weight: 450;
         margin-top: 5px;
@@ -267,12 +271,14 @@ because django accesses it first
                 // expensive feature
                 var user_url = document.createElement("a")
                 user_url.href = '/account/'+ id
-                user_url.innerHTML = 'view'
+                // user_url.innerHTML = 'view'
 
-                my_user.appendChild(user_url)
+                // my_user.appendChild(user_url)
+                user_url.appendChild(my_user)
 
                 // append to user list
-                userList.appendChild(my_user)
+                // userList.appendChild(my_user)
+                userList.appendChild(user_url)
             }
 
             // if (userList_l != null)
