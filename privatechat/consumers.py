@@ -239,7 +239,7 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
 		# Send a message down to the client
 		print("ChatConsumer: chat_message")
 
-		timestamp = calculate_timestamp(timezone.now())
+		timestamp = calculate_timestamp(timezone.localtime())
 
 		await self.send_json(
 			{
