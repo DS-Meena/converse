@@ -47,6 +47,7 @@
 			<th scope="col">Posted On</th>
 			<th scope="col">Status</th>
 			<th scope="col">Change Status</th>
+			<th scope="col">Delete</th>
 		  </tr>
 		</thead>
 		<tbody class="text-style">
@@ -69,6 +70,13 @@
 					Change
 				</a>
 			</td>
+
+			<td>
+				<a class="btn btn-danger" href="{% url 'blogs:delete_post' post.slug %}" onclick="deleteAlert()">
+					Delete
+				</a>
+			</td>
+
 			</tr>
 		  {% endfor %}
 		</tbody>
@@ -82,7 +90,13 @@
 	</div>
 	
 </div>
+<script type="text/javascript">
+	function deleteAlert()
+	{
+		alert("Post Deleted!");
+	}
 
+</script>
 
 {% endblock content %}
 
