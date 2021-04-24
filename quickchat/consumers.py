@@ -133,8 +133,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = event['message']
 
         # try to calcualte the timestamp also
-        timestamp = calculate_timestamp(timezone.now())
-
+        timestamp = calculate_timestamp(timezone.localtime())
         # Send message to WebSocket
         await self.send(text_data=json.dumps({
             'message': message,
@@ -166,4 +165,5 @@ def calculate_timestamp(timestamp):
     else:
         str_time = datetime.strftime(timestamp, "%m/%d/%Y")
         ts = f"{str_time}"
+       # print(str(ts))
     return str(ts)

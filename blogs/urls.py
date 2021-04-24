@@ -13,4 +13,5 @@ urlpatterns = [
     path('<slug:slug>/', views.post_detail, name="post_detail"),
     path('list/<user_id>/', blog_list_view, name='list'),
     path('update_status/<str:slug>/',views.updateStatus,name='update_status'),
+    path('delete_post/<str:slug>/',views.deletePost,name='delete_post'),
 ]

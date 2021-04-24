@@ -116,7 +116,7 @@ def blog_list_view(request, *args, **kwargs):
 def updateStatus(request, slug):
     post = Post.objects.get(slug=slug)
     post.status = not post.status
-    print(post.status)
+   # print(post.status)
     post.save()
     blogs = []
     user = request.user
@@ -127,3 +127,14 @@ def updateStatus(request, slug):
     
     return render(request, 'blog_list.html', context)
   
+def deletePost(request, slug):
+    post = Post.objects.get(slug=slug)
+    post.delete()
+    blogs = []
+    user = request.user
+    blog_list = Post.objects.filter(author=user)
+    for blog in blog_list.all():
+        blogs.append((blog))
+    context = {'blogs':blogs}
+    
+    return render(request, 'blog_list.html', context)

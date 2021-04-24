@@ -141,7 +141,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = event['message']
 
         # try to calcualte the timestamp also
-        timestamp = calculate_timestamp(timezone.now())
+        timestamp = calculate_timestamp(timezone.localtime())
 
         
         # Send message to WebSocket
