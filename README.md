@@ -1,3 +1,8 @@
+# About
+Based on Django Channels, Redis for real-time chatting, web app for chatting. Users can create chatrooms, time-based chatrooms, and has friend functionality for private chats with your friends. Can join and create a chatroom just by entering name.
+![conv-1280x650](https://github.com/user-attachments/assets/08cb41dc-5c97-4f79-85aa-98059ab42630)
+
+
 # Guide to Run the Webapp 
 
 This document is a guide to download the our web app and run it on your local system:
